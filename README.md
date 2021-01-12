@@ -1,7 +1,6 @@
 File system enumerator and file monitor for Android. Built to be compatible with other command line utilties! This tool was created to somewhat automate file discovery by catching new files that are created by Android applications at runtime.
 
-Disclaimer: This is a tool I literally hacked together while learning Rust so the methods used may not be optimal.
-
+Disclaimer: This tool is meant for educational and ethical purposes. I'm not responsible for any buffoonery.
 Tested on Ubuntu with rooted device.
 
 ### Building from source with cargo
@@ -16,7 +15,7 @@ Tested on Ubuntu with rooted device.
 
 Note: `adb shell uname -a` will list your phone's architecture.
 
-`rustup toolchain install arm-linux-androideabi`
+`rustup target add arm-linux-androideabi --toolchain nightly`
 
 Other toolchain names:
 
@@ -78,11 +77,11 @@ all:
 
 ##### ARMv7 architecture
 
-`make test_armv7.mk`
+`make -f test_armv7.mk`
 
 ##### AARCH64 architecture
 
-`make test_aarch64.mk`
+`make -f test_aarch64.mk`
 
 ---
 

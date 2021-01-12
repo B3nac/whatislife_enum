@@ -4,9 +4,9 @@ Disclaimer: This is a tool I literally hacked together while learning Rust so th
 
 Tested on Ubuntu with rooted device.
 
-#### Building from source with cargo
+### Building from source with cargo
 
-##### Pre-reqs
+#### Pre-reqs
 
 1. Install Rust
 
@@ -51,9 +51,9 @@ Creates a binary for armv7-linux-androideabi
 
 `cargo build --release --target=armv7-linux-androideabi`
 
-#### Automatically deploy to a device with make files
+### Automatically deploy to a device with make files
 
-##### Pre-reqs
+#### Pre-reqs
 
 `sudo apt-get install build-essential`
 
@@ -72,23 +72,23 @@ all:
 
 ```
 
-###### ARM architecture
+##### ARM architecture
 
 `make -f test_arm.mk`
 
-###### ARMv7 architecture
+##### ARMv7 architecture
 
 `make test_armv7.mk`
 
-###### AARCH64 architecture
+##### AARCH64 architecture
 
 `make test_aarch64.mk`
 
 ---
 
-#### Command documentation
+### Command documentation
 
-###### Enumerate the entire file system
+##### Enumerate the entire file system
 
 adb shell /data/local/tmp/whatislife_enum create
 
@@ -96,7 +96,7 @@ Save results by piping to a file `adb shell /data/local/tmp/whatislife_enum crea
 
 Note: > overwrites the entire file >> appends results
 
-###### Enumerate apps
+##### Enumerate apps
 
 adb shell /data/local/tmp/whatislife_enum apps
 
@@ -104,7 +104,7 @@ Save results by piping to a file `adb shell /data/local/tmp/whatislife_enum apps
 
 Note: > overwrites the entire file >> appends results
 
-###### Enumerate external-storage
+##### Enumerate external-storage
 
 adb shell /data/local/tmp/whatislife_enum external-storage
 
@@ -112,16 +112,16 @@ Save results by piping to a file `adb shell /data/local/tmp/whatislife_enum exte
 
 Note: > overwrites the entire file >> appends results
 
-###### Show changes to file system
-
-adb shell /data/local/tmp/whatislife_enum filemon /data/local/tmp/results.txt /data/local/tmp/results2.txt | sed '/proc/d'
+##### Show changes to file system
 
 Scan the filesystem again and name the file whatever you want in this example I named the new scan results2.txt (super original I know).
 
+`adb shell /data/local/tmp/whatislife_enum filemon /data/local/tmp/results.txt /data/local/tmp/results2.txt | sed '/proc/d'`
+
 The result will print the differences between file system scans.
 
-###### Update base file system file
+##### Update base file system file
 
-adb shell /data/local/tmp/whatislife_enum refresh current_result_file new_result_file_name new_result_file
+`adb shell /data/local/tmp/whatislife_enum refresh current_result_file new_result_file_name new_result_file`
 
-adb shell /data/local/tmp/whatislife_enum refresh /data/local/tmp/results.txt /data/local/tmp/results-test.txt /data/local/tmp/results2.txt
+`adb shell /data/local/tmp/whatislife_enum refresh /data/local/tmp/results.txt /data/local/tmp/results-test.txt /data/local/tmp/results2.txt`

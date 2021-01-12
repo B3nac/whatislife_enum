@@ -1,0 +1,11 @@
+[package]
+name = "whatislife_enum"
+version = "0.1.0"
+authors = ["B3nac <b3nac.sec@gmail.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+walkdir = "2"
+file_diff = "1.0.0"

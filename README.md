@@ -11,7 +11,13 @@ Tested on Ubuntu with rooted device.
 
 `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`
 
-2. Install toolchains for your Android architecture
+2. Switch to Rust nightly for .contains substring library.
+
+`rustup show`
+
+`rustup override set <toolchain>`
+
+3. Install toolchains for your Android architecture
 
 Note: `adb shell uname -a` will list your phone's architecture.
 
@@ -25,12 +31,29 @@ arm-linux-androideabi
 armv7-linux-androideabi
 i686-linux-android
 ```
+5. Change .cargo/config to link your NDK SDK
 
-3. Switch to Rust nightly for .contains substring library.
+```
+[target.arm-linux-androideabi]
+ar = "/home/b3nac/Android/Sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/linux-x86_64/bin/arm-linux-androideabi-ar"
+linker = "/home/b3nac/Android/Sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi24-clang"
 
-`rustup show`
+[target.aarch64-linux-android]
+ar = "/home/b3nac/Android/Sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android-ar"
+linker = "/home/b3nac/Android/Sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android24-clang"
 
-`rustup override set <toolchain>`
+[target.i686-linux-android]
+ar = "/home/b3nac/Android/Sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/linux-x86_64/bin/i686-linux-android-ar"
+linker = "/home/b3nac/Android/Sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/linux-x86_64/bin/i686-linux-android24-clang"
+
+[target.x86_64-linux-android]
+ar = "/home/b3nac/Android/Sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/linux-x86_64/bin/x86_64-linux-android-ar"
+linker = "/home/b3nac/Android/Sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/linux-x86_64/bin/x86_64-linux-android24-clang"
+
+[target.armv7-linux-androideabi]
+ar = "/home/b3nac/Android/Sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/linux-x86_64/bin/arm-linux-androideabi-ar"
+linker = "/home/b3nac/Android/Sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi24-clang"
+```
 
 4. Build binaries
 
@@ -65,7 +88,6 @@ all:
 	cargo build --release --target=arm-linux-androideabi
 	adb push target/arm-linux-androideabi/release/whatislife_enum /data/local/tmp/whatislife_enum
 	adb shell chmod 755 /data/local/tmp/whatislife_enum
-	adb shell touch /data/local/tmp/results.txt
 	adb shell /data/local/tmp/whatislife_enum create > results.txt
 	adb push results.txt /data/local/tmp
 
@@ -89,7 +111,7 @@ all:
 
 ##### Enumerate the entire file system
 
-adb shell /data/local/tmp/whatislife_enum create
+`adb shell /data/local/tmp/whatislife_enum create`
 
 Save results by piping to a file `adb shell /data/local/tmp/whatislife_enum create > results.txt`
 
@@ -97,7 +119,7 @@ Note: > overwrites the entire file >> appends results
 
 ##### Enumerate apps
 
-adb shell /data/local/tmp/whatislife_enum apps
+`adb shell /data/local/tmp/whatislife_enum apps`
 
 Save results by piping to a file `adb shell /data/local/tmp/whatislife_enum apps /data/local/tmp/results.txt`
 
@@ -105,7 +127,7 @@ Note: > overwrites the entire file >> appends results
 
 ##### Enumerate external-storage
 
-adb shell /data/local/tmp/whatislife_enum external-storage
+`adb shell /data/local/tmp/whatislife_enum external-storage`
 
 Save results by piping to a file `adb shell /data/local/tmp/whatislife_enum external-storage /data/local/tmp/results.txt`
 

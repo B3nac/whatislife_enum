@@ -1,4 +1,4 @@
-Cross platform file system enumerator and file monitor for Android. Built to be compatible with other command line utilties! This tool was created to somewhat automate file discovery by catching new files that are created by Android applications at runtime.
+File system enumerator and file monitor for Android. Built to be compatible with other command line utilties! This tool was created to somewhat automate file discovery by catching new files that are created by Android applications at runtime.
 
 Disclaimer: This is a tool I literally hacked together while learning Rust so the methods used may not be optimal.
 

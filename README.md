@@ -3,6 +3,8 @@ File system enumerator and file monitor for Android. Built to be compatible with
 Disclaimer: This tool is meant for educational and ethical purposes. I'm not responsible for any buffoonery.
 Tested on Ubuntu with rooted device.
 
+---
+
 ### Building from source with cargo
 
 #### Pre-reqs
@@ -30,8 +32,9 @@ aarch64-linux-android
 arm-linux-androideabi
 armv7-linux-androideabi
 i686-linux-android
+x86_64-linux-android
 ```
-5. Change .cargo/config to link your NDK SDK
+4. Change .cargo/config to link your NDK SDK
 
 ```
 [target.arm-linux-androideabi]
@@ -55,7 +58,7 @@ ar = "/home/b3nac/Android/Sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/linux-x8
 linker = "/home/b3nac/Android/Sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi24-clang"
 ```
 
-4. Build binaries
+5. Build binaries
 
 Creates the binary for your PC
 
@@ -72,6 +75,8 @@ Creates a binary for aarch64-linux-android
 Creates a binary for armv7-linux-androideabi
 
 `cargo build --release --target=armv7-linux-androideabi`
+
+---
 
 ### Automatically deploy to a device with make files
 

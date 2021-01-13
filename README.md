@@ -5,6 +5,8 @@ Tested on Ubuntu with rooted device.
 
 ---
 
+Binaries are built in 
+
 ### Building from source with cargo
 
 #### Pre-reqs
@@ -114,6 +116,10 @@ all:
 
 ### Command documentation
 
+For most of the commands to work the filesystem needs to be enumerated first.
+
+`adb shell /data/local/tmp/whatislife_enum create > results.txt` will pipe the Android filesystem to your PC. After that either `adb push results.txt /data/local/tmp` or run whatislife_enum create in the tmp directory and pipe to a file on the device itself. `./whatislife_enum create > results.txt`. Then all the commands from your PC will work and output results.
+
 ##### Enumerate the entire file system
 
 `adb shell /data/local/tmp/whatislife_enum create`
@@ -124,17 +130,17 @@ Note: > overwrites the entire file >> appends results
 
 ##### Enumerate apps
 
-`adb shell /data/local/tmp/whatislife_enum apps`
+`adb shell /data/local/tmp/whatislife_enum apps path/to/result/file.txt`
 
-Save results by piping to a file `adb shell /data/local/tmp/whatislife_enum apps /data/local/tmp/results.txt`
+Save results by piping to a file `adb shell /data/local/tmp/whatislife_enum apps /data/local/tmp/results.txt > filename.txt`
 
 Note: > overwrites the entire file >> appends results
 
 ##### Enumerate external-storage
 
-`adb shell /data/local/tmp/whatislife_enum external-storage`
+`adb shell /data/local/tmp/whatislife_enum external-storage path/to/result/file.txt`
 
-Save results by piping to a file `adb shell /data/local/tmp/whatislife_enum external-storage /data/local/tmp/results.txt`
+Save results by piping to a file `adb shell /data/local/tmp/whatislife_enum external-storage /data/local/tmp/results.txt > filename.txt`
 
 Note: > overwrites the entire file >> appends results
 

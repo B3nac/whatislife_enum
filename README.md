@@ -5,7 +5,7 @@ Tested on Ubuntu with rooted device.
 
 ---
 
-Binaries are built in 
+Binaries are provided in [releases](https://github.com/B3nac/whatislife_enum/releases).
 
 ### Building from source with cargo
 

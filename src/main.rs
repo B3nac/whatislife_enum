@@ -87,7 +87,7 @@ fn filemon() {
 
     } else {
         let s = String::from_utf8_lossy(&file_changes.stderr);
-        print!("Error:\n{}", s);
+        print!("Please use absolute file paths and ensure the files exist:\n{}", s);
     }
 }
 }
@@ -97,8 +97,8 @@ fn refresh() -> std::io::Result<()> {
     let current_result_file = &args[2];
     let new_file_name = &args[3];
     let new_result_file = &args[4];
-    fs::rename(current_result_file, new_file_name);
-    fs::rename(new_result_file, current_result_file);
+    fs::rename(current_result_file, new_file_name).expect("Please use absolute file paths and ensure the files exist:");
+    fs::rename(new_result_file, current_result_file).expect("Please use absolute file paths and ensure the files exist:");
     Ok(())
 }
 
@@ -219,7 +219,7 @@ fn main() -> Result<(), Error> {
     }
 
     if &args[1] == "refresh" {
-        refresh();
+        refresh().expect("Please use absolute file paths and ensure the files exist:");
     }
 
     if &args[1] == "kernel" {
@@ -243,11 +243,11 @@ fn main() -> Result<(), Error> {
     }
 
     if &args[1] == "external-storage" {
-        external_storage();
+        external_storage().expect("Please run the create command before enumerating external storage and provide the absolute file path to the result file:");
     }
 
     if &args[1] == "apps" {
-        apps();
+        apps().expect("Please run the create command before enumerating apps and provide the absolute file path to the results file:");
     }
     Ok(())
 }

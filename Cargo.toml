@@ -1,6 +1,6 @@
 [package]
 name = "whatislife_enum"
-version = "0.1.0"
+version = "0.2.0"
 authors = ["B3nac <b3nac.sec@gmail.com>"]
 edition = "2018"
 

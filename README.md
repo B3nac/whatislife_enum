@@ -17,6 +17,12 @@ Binaries are provided in [releases](https://github.com/B3nac/whatislife_enum/rel
 
 2. Switch to Rust nightly for .contains substring library.
 
+`rustup install nightly`
+
+`rustup +nightly build`
+
+or
+
 `rustup show`
 
 `rustup override set <toolchain>`

@@ -19,7 +19,7 @@ Binaries are provided in [releases](https://github.com/B3nac/whatislife_enum/rel
 
 `rustup install nightly`
 
-`rustup +nightly build`
+`cargo +nightly build`
 
 or
 
